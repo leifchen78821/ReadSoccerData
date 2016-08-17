@@ -52,16 +52,18 @@
 
 // echo htmlspecialchars($pageContent);
 
-
+ignore_user_abort(true);
+set_time_limit(0);
+$interval = 60;
 
 header("content-type: text/html; charset=utf-8");
 //網站
 $url1 = 'http://www.228365365.com/sports.php';
 
-// $url2 = 'http://www.228365365.com/app/member/FT_browse/body_var.php?uid=test00&rtype=r&langx=zh-cn&mtype=3&delay=&league_id=';
+$url2 = 'http://www.228365365.com/app/member/FT_browse/body_var.php?uid=test00&rtype=r&langx=zh-cn&mtype=3&delay=&league_id=';
 
 // 早
-$url2 = 'http://www.228365365.com/app/member/FT_future/body_var.php?uid=test00&rtype=r&langx=zh-cn&g_date=ALL&mtype=3&league_id=';
+// $url2 = 'http://www.228365365.com/app/member/FT_future/body_var.php?uid=test00&rtype=r&langx=zh-cn&g_date=ALL&mtype=3&league_id=';
 
 //cookie
 $ch = curl_init();
@@ -258,22 +260,26 @@ for($i = 1; $i < count($arr); $i++) {
     $prepare->execute();
 }
 
-$lastId = $db->lastInsertId();
-$deleteId = $lastId - 59 ;
+// for($i = 1; $i < count($arr) ;$i++) {
+//     $newarr[$i] = explode(',',$arr[$i]);
+//     var_dump($newarr[$i]);
+//     // echo $newarr[$i] . "<br>" ;
+// }
 
-$sql = "DELETE FROM `SoccerData`.` TodayRace` WHERE ` TodayRace`.`tID` < :deleteId;" ;
-$prepare = $db->prepare($sql);
-$prepare->bindParam(':deleteId',$deleteId);
-$prepare->execute();
 
-?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="refresh" content="60;url='ReadSoccerData.php'; charset=UTF-8" />
-    </head>
-    <body>
-        此網頁每60秒會重整一次
-    </body>
-</html>
+// $arr = explode('</font>', $content);
+// // $num = var_dump($arr);
+
+// for($i = 1; $i < count($arr) ;$i++) {
+//     // $arrinside = explode(',', $arr);
+//     var_dump($arr[$i]);
+//     // echo $arr[$i] ;
+//     echo "<br><br>" ;
+// }
+
+
+
+// echo "<iframe>";
+// echo $content;
+// echo "</iframe>";
