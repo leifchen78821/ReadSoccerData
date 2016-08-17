@@ -281,3 +281,15 @@ for($i = 1; $i < count($arr); $i++) {
 // echo "<iframe>";
 // echo $content;
 // echo "</iframe>";
+
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="refresh" content="60;url='ReadSoccerData.php'; charset=UTF-8" />
+    </head>
+    <body>
+        此網頁每60秒會重整一次
+    </body>
+</html>
