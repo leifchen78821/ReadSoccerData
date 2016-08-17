@@ -258,29 +258,13 @@ for($i = 1; $i < count($arr); $i++) {
     $prepare->execute();
 }
 
-// for($i = 1; $i < count($arr) ;$i++) {
-//     $newarr[$i] = explode(',',$arr[$i]);
-//     var_dump($newarr[$i]);
-//     // echo $newarr[$i] . "<br>" ;
-// }
+$lastId = $db->lastInsertId();
+$deleteId = $lastId - 59 ;
 
-
-
-// $arr = explode('</font>', $content);
-// // $num = var_dump($arr);
-
-// for($i = 1; $i < count($arr) ;$i++) {
-//     // $arrinside = explode(',', $arr);
-//     var_dump($arr[$i]);
-//     // echo $arr[$i] ;
-//     echo "<br><br>" ;
-// }
-
-
-
-// echo "<iframe>";
-// echo $content;
-// echo "</iframe>";
+$sql = "DELETE FROM `SoccerData`.` TodayRace` WHERE ` TodayRace`.`tID` < :deleteId;" ;
+$prepare = $db->prepare($sql);
+$prepare->bindParam(':deleteId',$deleteId);
+$prepare->execute();
 
 ?>
 
